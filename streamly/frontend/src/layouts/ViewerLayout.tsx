@@ -123,7 +123,7 @@ export const ViewerLayout: React.FC<ViewerLayoutProps> = ({ onAnalysisComplete }
 
       {/* Page Content */}
       <main className="min-h-[calc(100vh-4rem)]">
-        <Outlet />
+        <Outlet context={{ onOpenAnalyzeModal: () => setIsAnalyzeModalOpen(true) }} />
       </main>
 
       {/* Footer */}

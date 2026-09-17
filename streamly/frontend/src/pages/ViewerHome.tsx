@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useOutletContext } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { apiService } from '../services/api';
 import { Movie, RecommendResponse, SegmentInfo } from '../types';
@@ -8,13 +9,15 @@ import { FamiliarExploreSlider } from '../components/FamiliarExploreSlider';
 import { Play, Plus, Star, Sparkles, TrendingUp, History, Film, RefreshCw, Check } from 'lucide-react';
 
 interface ViewerHomeProps {
-  onOpenAnalyzeModal: () => void;
+  onOpenAnalyzeModal?: () => void;
   recommendData: RecommendResponse | null;
   setRecommendData: React.Dispatch<React.SetStateAction<RecommendResponse | null>>;
 }
 
-export const ViewerHome: React.FC<ViewerHomeProps> = ({ onOpenAnalyzeModal, recommendData, setRecommendData }) => {
+export const ViewerHome: React.FC<ViewerHomeProps> = ({ onOpenAnalyzeModal: propOnOpenModal, recommendData, setRecommendData }) => {
   const { user } = useAuth();
+  const outletCtx = useOutletContext<{ onOpenAnalyzeModal?: () => void }>();
+  const handleOpenAnalyzeModal = propOnOpenModal || outletCtx?.onOpenAnalyzeModal || (() => {});
   const [movies, setMovies] = useState<Movie[]>([]);
   const [explorationLevel, setExplorationLevel] = useState<number>(0.5);
   const [loading, setLoading] = useState<boolean>(true);
@@ -137,7 +140,7 @@ export const ViewerHome: React.FC<ViewerHomeProps> = ({ onOpenAnalyzeModal, reco
               <h4 className="text-sm font-bold text-white mt-0.5">Test Custom Viewer Inference</h4>
             </div>
             <button
-              onClick={onOpenAnalyzeModal}
+              onClick={handleOpenAnalyzeModal}
               className="w-full bg-[#FF1744]/15 hover:bg-[#FF1744]/25 text-[#FF6B9A] border border-[#FF1744]/40 font-bold py-2.5 px-4 rounded-xl flex items-center justify-center gap-2 text-xs transition-all shadow-sm"
             >
               <Sparkles className="w-4 h-4 text-[#FF1744]" /> Analyze New Viewer Profile

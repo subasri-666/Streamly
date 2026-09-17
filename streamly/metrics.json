@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-09-17T13:29:21.533583+00:00",
+  "timestamp": "2026-09-17T13:45:02.096610+00:00",
   "evaluator_status": "COMPLETED",
   "overall_result": "PASS",
   "test_summary": {
@@ -24,7 +24,7 @@
   },
   "api_performance": {
     "health_status": "HEALTHY",
-    "average_latency_ms": 12.93,
+    "average_latency_ms": 13.0,
     "reproducible": true
   },
   "test_suite_details": [
@@ -38,7 +38,7 @@
         "version": "1.0.0",
         "model_loaded": true,
         "database_connected": true,
-        "uptime_seconds": 9.47,
+        "uptime_seconds": 11.19,
         "n_clusters": 4
       }
     },
@@ -46,7 +46,7 @@
       "test_name": "valid_recommendation_request",
       "passed": true,
       "status_code": 200,
-      "latency_ms": 12.93,
+      "latency_ms": 13.0,
       "segment_returned": "High-Engagement Action Viewers"
     },
     {

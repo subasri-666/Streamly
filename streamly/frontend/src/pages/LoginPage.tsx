@@ -5,8 +5,16 @@ import { UserRole } from '../types';
 import { Tv, Sparkles, UserCheck, ShieldCheck, BarChart3, AlertCircle, ArrowRight, Lock } from 'lucide-react';
 
 export const LoginPage: React.FC = () => {
-  const { login } = useAuth();
+  const { user, token, login } = useAuth();
   const navigate = useNavigate();
+
+  React.useEffect(() => {
+    if (token && user) {
+      if (user.role === 'ADMIN') navigate('/admin/dashboard', { replace: true });
+      else if (user.role === 'ANALYST') navigate('/analyst/dashboard', { replace: true });
+      else navigate('/viewer/home', { replace: true });
+    }
+  }, [user, token, navigate]);
 
   const [selectedRole, setSelectedRole] = useState<UserRole>('VIEWER');
   const [email, setEmail] = useState<string>('viewer@streamly.demo');
