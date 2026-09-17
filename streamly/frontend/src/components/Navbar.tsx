@@ -10,7 +10,7 @@ interface NavbarProps {
 }
 
 export const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab, onOpenAnalyzeModal }) => {
-  const { user, logout, switchRole } = useAuth();
+  const { user, logout } = useAuth();
   const currentRole = user?.role || 'VIEWER';
 
   return (
@@ -148,7 +148,6 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab, onOpenA
               <button
                 key={r}
                 onClick={() => {
-                  switchRole(r);
                   if (r === 'ADMIN') setActiveTab('admin-dashboard');
                   else if (r === 'ANALYST') setActiveTab('analyst-dashboard');
                   else setActiveTab('home');

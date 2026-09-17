@@ -4,11 +4,11 @@ const API_BASE = '';
 
 export const apiService = {
   // Auth
-  async login(email: string, password: string): Promise<{ access_token: string; user: User }> {
+  async login(email: string, password: string, requested_role?: string): Promise<{ access_token: string; user: User }> {
     const res = await fetch(`${API_BASE}/api/auth/login`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email, password })
+      body: JSON.stringify({ email, password, requested_role })
     });
     if (!res.ok) {
       const err = await res.json();

@@ -5,9 +5,8 @@ import { apiService } from '../services/api';
 interface AuthContextType {
   user: User | null;
   token: string | null;
-  login: (email: string, password: string) => Promise<void>;
+  login: (email: string, password: string, requested_role?: UserRole) => Promise<void>;
   logout: () => void;
-  switchRole: (role: UserRole) => Promise<void>;
   loading: boolean;
 }
 
@@ -35,8 +34,8 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     initAuth();
   }, [token]);
 
-  const login = async (email: string, password: string) => {
-    const res = await apiService.login(email, password);
+  const login = async (email: string, password: string, requested_role?: UserRole) => {
+    const res = await apiService.login(email, password, requested_role);
     setToken(res.access_token);
     setUser(res.user);
     localStorage.setItem('streamly_token', res.access_token);
@@ -48,20 +47,8 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     localStorage.removeItem('streamly_token');
   };
 
-  const switchRole = async (role: UserRole) => {
-    const credentialsMap: Record<UserRole, { email: string; pass: string }> = {
-      ADMIN: { email: 'admin@streamly.demo', pass: 'StreamlyAdmin2026!' },
-      ANALYST: { email: 'analyst@streamly.demo', pass: 'StreamlyAnalyst2026!' },
-      VIEWER: { email: 'viewer@streamly.demo', pass: 'StreamlyViewer2026!' }
-    };
-    const creds = credentialsMap[role];
-    if (creds) {
-      await login(creds.email, creds.pass);
-    }
-  };
-
   return (
-    <AuthContext.Provider value={{ user, token, login, logout, switchRole, loading }}>
+    <AuthContext.Provider value={{ user, token, login, logout, loading }}>
       {children}
     </AuthContext.Provider>
   );

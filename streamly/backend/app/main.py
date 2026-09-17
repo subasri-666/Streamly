@@ -40,6 +40,7 @@ START_TIME = time.time()
 class UserLoginRequest(BaseModel):
     email: str
     password: str
+    requested_role: Optional[str] = None
 
 class RecommendRequest(BaseModel):
     user_id: Optional[str] = None
@@ -208,6 +209,13 @@ def login(req: UserLoginRequest, db: Session = Depends(get_db)):
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Invalid email or password")
     if not user.is_active:
         raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail="Account is disabled")
+
+    # Strict backend role validation
+    if req.requested_role and req.requested_role.upper() != user.role.upper():
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail=f"Role Mismatch: Your account is registered as {user.role}, not {req.requested_role.upper()}"
+        )
 
     token = create_access_token({"sub": user.id, "email": user.email, "role": user.role})
     return {
