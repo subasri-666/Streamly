@@ -1,0 +1,46 @@
+version: '3.8'
+
+services:
+  trainer:
+    build:
+      context: .
+      dockerfile: trainer/Dockerfile
+    container_name: streamly-trainer
+    volumes:
+      - ./models:/models
+      - ./data:/app/data
+
+  api:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    container_name: streamly-api
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./models:/models
+      - ./database:/database
+    depends_on:
+      trainer:
+        condition: service_completed_successfully
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:8000/health || exit 1"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+      start_period: 5s
+
+  evaluator:
+    build:
+      context: .
+      dockerfile: evaluator/Dockerfile
+    container_name: streamly-evaluator
+    volumes:
+      - ./models:/app/models
+      - .:/app
+    environment:
+      - API_URL=http://api:8000
+      - METRICS_PATH=/app/metrics.json
+    depends_on:
+      api:
+        condition: service_healthy

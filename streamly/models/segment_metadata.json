@@ -1,0 +1,126 @@
+{
+  "0": {
+    "name": "Casual Short-Session Viewers",
+    "description": "Frequent viewers (7.1 visits/wk) who prefer quick sessions (avg 24 mins). High affinity for Comedy and Animation.",
+    "size": 300,
+    "percentage": 25.0,
+    "recommendation_behavior": "Prioritize short-form content, trending short films, and bite-sized comedy/animation.",
+    "top_genres": [
+      "Comedy",
+      "Animation"
+    ],
+    "dominant_genre_ratios": {
+      "Comedy": 0.398,
+      "Animation": 0.299,
+      "Romance": 0.148,
+      "Action": 0.052
+    },
+    "centroid_summary": {
+      "avg_watch_time_mins": 850.3,
+      "avg_session_duration_mins": 24.7,
+      "avg_sessions": 32.7,
+      "viewing_frequency_per_week": 7.1,
+      "completion_rate": 0.65
+    },
+    "dna_metrics": {
+      "engagement": 42,
+      "session_pattern": 20,
+      "genre_affinity": 79,
+      "exploration": 90
+    },
+    "segment_id": 0
+  },
+  "1": {
+    "name": "Genre Explorers",
+    "description": "Active viewers with diverse taste across multiple genres (Drama, Sci-Fi). Balanced session lengths (64 mins).",
+    "size": 300,
+    "percentage": 25.0,
+    "recommendation_behavior": "Recommend a mix of preferred Drama titles with curated exploration of adjacent genres.",
+    "top_genres": [
+      "Drama",
+      "Sci-Fi"
+    ],
+    "dominant_genre_ratios": {
+      "Drama": 0.249,
+      "Sci-Fi": 0.201,
+      "Comedy": 0.178,
+      "Action": 0.151
+    },
+    "centroid_summary": {
+      "avg_watch_time_mins": 2101.1,
+      "avg_session_duration_mins": 64.4,
+      "avg_sessions": 31.4,
+      "viewing_frequency_per_week": 8.1,
+      "completion_rate": 0.77
+    },
+    "dna_metrics": {
+      "engagement": 68,
+      "session_pattern": 53,
+      "genre_affinity": 49,
+      "exploration": 100
+    },
+    "segment_id": 1
+  },
+  "2": {
+    "name": "High-Engagement Action Viewers",
+    "description": "Power users with extensive watch time (avg 3200 mins) and long sessions (109 mins). Strongly prefer Action and Thriller.",
+    "size": 360,
+    "percentage": 30.0,
+    "recommendation_behavior": "Prioritize deep Action and Thriller blockbusters and exclusive series.",
+    "top_genres": [
+      "Action",
+      "Thriller"
+    ],
+    "dominant_genre_ratios": {
+      "Action": 0.449,
+      "Thriller": 0.302,
+      "Sci-Fi": 0.147,
+      "Comedy": 0.041
+    },
+    "centroid_summary": {
+      "avg_watch_time_mins": 3200.7,
+      "avg_session_duration_mins": 109.7,
+      "avg_sessions": 30.0,
+      "viewing_frequency_per_week": 9.6,
+      "completion_rate": 0.86
+    },
+    "dna_metrics": {
+      "engagement": 93,
+      "session_pattern": 91,
+      "genre_affinity": 89,
+      "exploration": 82
+    },
+    "segment_id": 2
+  },
+  "3": {
+    "name": "Low-Activity Viewers",
+    "description": "Occasional viewers with lower overall watch time (avg 358 mins). Mainly watch Drama content.",
+    "size": 240,
+    "percentage": 20.0,
+    "recommendation_behavior": "Surface top-rated popular hits and low-friction introductory movies to boost engagement.",
+    "top_genres": [
+      "Drama",
+      "Romance"
+    ],
+    "dominant_genre_ratios": {
+      "Drama": 0.45,
+      "Romance": 0.297,
+      "Comedy": 0.149,
+      "Action": 0.04
+    },
+    "centroid_summary": {
+      "avg_watch_time_mins": 358.1,
+      "avg_session_duration_mins": 40.4,
+      "avg_sessions": 8.5,
+      "viewing_frequency_per_week": 2.2,
+      "completion_rate": 0.45
+    },
+    "dna_metrics": {
+      "engagement": 14,
+      "session_pattern": 33,
+      "genre_affinity": 90,
+      "exploration": 82
+    },
+    "segment_id": 3
+  }
+}

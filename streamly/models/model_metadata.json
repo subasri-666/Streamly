@@ -1,0 +1,54 @@
+{
+  "algorithm": "KMeans",
+  "scaling_method": "StandardScaler",
+  "n_clusters": 4,
+  "random_seed": 42,
+  "features": [
+    "total_watch_time_mins",
+    "avg_session_duration_mins",
+    "number_of_sessions",
+    "viewing_frequency_per_week",
+    "completion_rate",
+    "weekend_viewing_ratio",
+    "genre_action_ratio",
+    "genre_comedy_ratio",
+    "genre_drama_ratio",
+    "genre_thriller_ratio",
+    "genre_scifi_ratio",
+    "genre_romance_ratio",
+    "genre_horror_ratio",
+    "genre_animation_ratio"
+  ],
+  "training_samples": 1200,
+  "silhouette_score": 0.5428,
+  "inertia": 2968.28,
+  "k_evaluations": [
+    {
+      "k": 2,
+      "silhouette_score": 0.4449,
+      "inertia": 8816.49
+    },
+    {
+      "k": 3,
+      "silhouette_score": 0.5182,
+      "inertia": 5299.4
+    },
+    {
+      "k": 4,
+      "silhouette_score": 0.5428,
+      "inertia": 2968.28
+    },
+    {
+      "k": 5,
+      "silhouette_score": 0.461,
+      "inertia": 2820.65
+    },
+    {
+      "k": 6,
+      "silhouette_score": 0.3583,
+      "inertia": 2684.82
+    }
+  ],
+  "trained_at": "2026-09-17T13:07:33.451639+00:00",
+  "version": "1.0.0"
+}

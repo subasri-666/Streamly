@@ -1,0 +1,88 @@
+{
+  "timestamp": "2026-09-17T13:14:25.193399+00:00",
+  "evaluator_status": "COMPLETED",
+  "overall_result": "PASS",
+  "test_summary": {
+    "total_tests": 9,
+    "passed": 9,
+    "failed": 0,
+    "pass_rate_percentage": 100.0
+  },
+  "clustering_quality": {
+    "algorithm": "KMeans",
+    "scaler": "StandardScaler",
+    "n_clusters": 4,
+    "silhouette_score": 0.5428,
+    "inertia": 2968.28,
+    "cluster_balance_ratio": 0.667,
+    "cluster_distribution": {
+      "Casual Short-Session Viewers": 300,
+      "Genre Explorers": 300,
+      "High-Engagement Action Viewers": 360,
+      "Low-Activity Viewers": 240
+    }
+  },
+  "api_performance": {
+    "health_status": "HEALTHY",
+    "average_latency_ms": 1.98,
+    "reproducible": true
+  },
+  "test_suite_details": [
+    {
+      "test_name": "api_healthcheck",
+      "passed": true,
+      "status_code": 200,
+      "details": {
+        "status": "healthy",
+        "service": "Streamly API",
+        "version": "1.0.0",
+        "model_loaded": true,
+        "database_connected": true,
+        "uptime_seconds": 253.69,
+        "n_clusters": 4
+      }
+    },
+    {
+      "test_name": "valid_recommendation_request",
+      "passed": true,
+      "status_code": 200,
+      "latency_ms": 1.98,
+      "segment_returned": "High-Engagement Action Viewers"
+    },
+    {
+      "test_name": "missing_fields_graceful_handling",
+      "passed": true,
+      "status_code": 200
+    },
+    {
+      "test_name": "string_for_numeric_validation",
+      "passed": true,
+      "status_code": 422
+    },
+    {
+      "test_name": "negative_value_sanitization",
+      "passed": true,
+      "status_code": 200
+    },
+    {
+      "test_name": "empty_genre_list_fallback",
+      "passed": true,
+      "status_code": 200
+    },
+    {
+      "test_name": "unknown_genre_resilience",
+      "passed": true,
+      "status_code": 200
+    },
+    {
+      "test_name": "extreme_numeric_clipping",
+      "passed": true,
+      "status_code": 200
+    },
+    {
+      "test_name": "reproducibility_and_determinism",
+      "passed": true,
+      "details": "Segment A: 2, Segment B: 2"
+    }
+  ]
+}
