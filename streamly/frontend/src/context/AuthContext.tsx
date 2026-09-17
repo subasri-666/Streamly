@@ -19,10 +19,12 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   useEffect(() => {
     const initAuth = async () => {
-      if (token) {
+      const storedToken = localStorage.getItem('streamly_token');
+      if (storedToken) {
         try {
-          const userData = await apiService.getMe(token);
+          const userData = await apiService.getMe(storedToken);
           setUser(userData);
+          setToken(storedToken);
         } catch {
           localStorage.removeItem('streamly_token');
           setToken(null);
@@ -32,7 +34,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       setLoading(false);
     };
     initAuth();
-  }, [token]);
+  }, []);
 
   const login = async (email: string, password: string, requested_role?: UserRole) => {
     const res = await apiService.login(email, password, requested_role);
